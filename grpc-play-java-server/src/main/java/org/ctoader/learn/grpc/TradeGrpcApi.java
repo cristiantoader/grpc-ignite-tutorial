@@ -25,5 +25,10 @@ public class TradeGrpcApi extends TradeServiceGrpc.TradeServiceImplBase {
         this.tradeService.findTrades(filter, responseObserver);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void findTradesIgnite(TradeFilter request, StreamObserver<Trade> responseObserver) {
+        this.tradeService.findTradesIgnite(request, responseObserver);
+    }
 }
 

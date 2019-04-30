@@ -30,4 +30,5 @@ message TradeResponse {
 
 service TradeService {
     rpc findTrades(TradeFilter) returns (stream Trade);
+    rpc findTradesIgnite(TradeFilter) returns (stream Trade);
 }

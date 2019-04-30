@@ -13,14 +13,17 @@
         <module>grpc-play-model</module>
         <module>grpc-play-java-server</module>
         <module>grpc-play-java-client</module>
+        <module>ignite-server</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
         <grpc.version>1.16.1</grpc.version>
+        <ignite.version>2.5.0</ignite.version>
         <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
         <spring-boot-dependencies.version>2.1.4.RELEASE</spring-boot-dependencies.version>
         <lombok.version>1.18.6</lombok.version>
+        <h2.version>1.4.195</h2.version>
     </properties>
 
     <dependencyManagement>

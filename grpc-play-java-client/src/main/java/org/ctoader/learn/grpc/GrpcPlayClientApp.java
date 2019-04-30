@@ -36,7 +36,7 @@ public class GrpcPlayClientApp implements ApplicationRunner {
 
         PerformanceMeasurement performanceMeasurement = new PerformanceMeasurement();
 
-        Iterator<Trade> trades = stub.findTrades(filter);
+        Iterator<Trade> trades = stub.findTradesIgnite(filter);
         while (trades.hasNext()) {
             performanceMeasurement.recordEntry(trades.next());
         }
