@@ -10,23 +10,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class TradeGrpcCApi extends TradeServiceGrpc.TradeServiceImplBase {
+public class TradeGrpcApi extends TradeServiceGrpc.TradeServiceImplBase {
 
     private final TradeService tradeService;
 
     @Autowired
-    public TradeGrpcCApi(TradeService tradeService) {
+    public TradeGrpcApi(TradeService tradeService) {
         this.tradeService = tradeService;
     }
 
     @Override
     public void findTrades(TradeFilter filter, StreamObserver<Trade> responseObserver) {
         log.info("Received find trades filed request {}.", filter);
-
-        this.tradeService.findTrades(filter)
-                .stream()
-                .forEach(responseObserver::onNext);
-
+        this.tradeService.findTrades(filter, responseObserver);
         responseObserver.onCompleted();
     }
 }

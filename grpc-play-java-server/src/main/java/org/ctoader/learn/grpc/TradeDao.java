@@ -2,8 +2,8 @@ package org.ctoader.learn.grpc;
 
 import org.ctoader.learn.grpc.api.Trade;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 public interface TradeDao {
-    List<Trade> findAllTrades();
+    Stream<Trade> findAllTrades();
 }

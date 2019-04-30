@@ -3,21 +3,23 @@ option java_multiple_files = true;
 
 package org.ctoader.learn.grpc.api;
 
+import "google/protobuf/wrappers.proto";
+
 message Trade {
-    int32 refid = 1;
+    google.protobuf.Int64Value refid = 1;
     string sourceSystem = 2;
     string tradeId = 3;
-    int32 version = 4;
+    google.protobuf.Int32Value version = 4;
     string productType = 5;
     string productSubType = 6;
     bytes body = 7;
 }
 
 message TradeFilter {
-    int32 refid = 1;
+    google.protobuf.Int64Value refid = 1;
     string sourceSystem = 2;
     string tradeId = 3;
-    int32 version = 4;
+    google.protobuf.Int32Value version = 4;
     string productType = 5;
     string productSubType = 6;
 }

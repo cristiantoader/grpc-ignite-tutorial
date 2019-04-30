@@ -24,7 +24,7 @@ public class GrpcPlayClientApp implements ApplicationRunner {
         SpringApplication.run(GrpcPlayClientApp.class, args);
     }
 
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress(HOST_NAME, HOST_PORT)
                 .usePlaintext()
                 .build();
@@ -32,13 +32,13 @@ public class GrpcPlayClientApp implements ApplicationRunner {
         TradeServiceGrpc.TradeServiceBlockingStub stub = TradeServiceGrpc.newBlockingStub(channel);
 
         TradeFilter filter = TradeFilter.newBuilder()
-                                        .setProductSubType("PT")
                                         .build();
+
+        PerformanceMeasurement performanceMeasurement = new PerformanceMeasurement();
 
         Iterator<Trade> trades = stub.findTrades(filter);
         while (trades.hasNext()) {
-            Trade trade = trades.next();
-            log.info("Received trade {}.", trade);
+            performanceMeasurement.recordEntry(trades.next());
         }
 
         channel.shutdown();
